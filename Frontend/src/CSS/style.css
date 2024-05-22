@@ -1,0 +1,94 @@
+#font{
+    font-family: "Dosis", sans-serif;
+}
+#normal{
+    font-family: "Source Sans 3", sans-serif;
+}
+#times{
+    font-family: "Sedan", serif;
+}
+
+#animate{
+    text-shadow:  white;
+}
+#back{
+    background: linear-gradient(to right, #b882ff, #a9d6e5);
+}
+#footer{
+    background: linear-gradient(to right, #84a98c, #232323);
+
+}
+#heading{
+    font-family: "Playfair Display", serif;
+}
+
+#blog{
+    font-family: "Libre Baskerville", serif;
+}
+
+#scroll{
+
+}
+#scroll::-webkit-scrollbar{
+    width: 0.2rem;
+}
+#scroll::-webkit-scrollbar-track{
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#scroll::-webkit-scrollbar-thumb{
+    width: 0.2rem;
+    /* background-color: transparent; */
+    border-radius:20px ;
+}
+#scroll:hover::-webkit-scrollbar-thumb{
+    /* background-color: rgb(73, 74, 74); */
+    background-color: white;
+}
+
+
+
+#scrollHome{
+
+}
+#scrollHome::-webkit-scrollbar{
+    width: 0.1rem;
+}
+#scrollHome::-webkit-scrollbar-track{
+    visibility: hidden;
+}
+#scrollHome::-webkit-scrollbar-thumb{
+    width: 0.4rem;
+    border-radius:20px ;
+}
+#scrollHome:hover::-webkit-scrollbar-thumb{
+    visibility: hidden;
+}
+
+
+#scrollComment{
+
+}
+#scrollComment::-webkit-scrollbar{
+    width: 0.1rem;
+}
+#scrollComment::-webkit-scrollbar-track{
+    background-color: transparent;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+#scrollComment::-webkit-scrollbar-thumb{
+    width: 0.1rem;
+    border-radius:20px ;
+}
+#scrollComment:hover::-webkit-scrollbar-thumb{
+    background-color: black;
+}
+
+
+#kanit {
+    font-family: "Kanit", sans-serif;
+  }
+
+
