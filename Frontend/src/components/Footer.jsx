@@ -3,7 +3,7 @@ import '../CSS/style.css'
 
 function Footer () {
   return (
-    <div className='bottom-0 mt-20 bg-white p-4 w-full h-auto'>
+    <div className='bottom-0 bg-white p-4 w-full h-auto'>
         <div className='w-full h-auto py-10'>
             <div className='flex flex-row h-[60px]'>
                 <div className=' flex flex-row gap-2 items-center w-[220px] bg-[#232323] ml-6 px-5 rounded-3xl'>
@@ -20,7 +20,7 @@ function Footer () {
                     <div className='text-3xl text-white 'id='font'>Alfredough</div>
                 </div>
                 <div className='h-full flex justify-end items-end text-3xl font-bold'>...</div>
-                <div className='text-[#676767] text-md sm:text-lg lg:text-xl px-6 flex items-end ' id='kanit'>
+                <div className='text-[#676767] text-md sm:text-lg lg:text-xl px-6 hidden sm:flex items-end' id='kanit'>
                     Sharing a slice of life through stories.
                 </div>
             </div>
@@ -28,7 +28,7 @@ function Footer () {
                 ' Let's start '
             </div>
             <div className='w-full flex flex-col md:flex-row'>
-                <div className='bg-purple-200 shadow-md shadow-[#232323]/50 h-auto w-[75%] md:max-w-[400px] md:ml-6 mx-auto px-10 flex flex-col p-2 rounded-xl'>
+                <div className='bg-purple-300 shadow-md shadow-[#232323]/50 h-auto w-[75%] max-w-[400px] md:ml-6 mx-auto px-10 flex flex-col p-2 rounded-xl'>
                     <div className='w-[250px] p-4 bg-[#232323] text-white rounded-lg' id='kanit'>
                         Enter your email  here to receive the latest updates and newsletter.
                     </div>

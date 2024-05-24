@@ -96,7 +96,6 @@ function Write () {
 		setBlog({...blog, title:e.target.value.substring(0, 40)})
 	}
 
-
 	
 	const updateBlog = () => {
 		console.log(blog)
@@ -104,7 +103,6 @@ function Write () {
 
 	}
 	
-
 
 	const userId = details.id
 
@@ -189,10 +187,10 @@ return (
 				</div>
 			</div>
 			
-			<div className='flex flex-col xl:flex-row w-[90vw] md:w-[80vw] xl:w-[70vw]'>
+			<div className='flex flex-col gap-4 xl:gap-0 xl:flex-row w-[90vw] md:w-[80vw] xl:w-[70vw]'>
 
 				<div className=' flex flex-col justify-center xl:w-1/2 '>
-					<div className='text-3xl px-6 py-1 text-white' id='font'  >
+					<div className='text-3xl px-6 py-2 text-white' id='font'  >
 						Image: 
 					</div>
 					{
@@ -204,72 +202,64 @@ return (
 								onCropDone = {onCropDone}
 								onCropCancel = {onCropCancel}
 								/>
-							) : (
-								<div>
-									<div className='p-6'>
-										<img src={imageAfterCrop} alt="" className='w-full rounded-xl overflow-hidden'/>
-									</div>
+						) : (
+							<div>
+								<div className='p-6'>
+									<img src={imageAfterCrop} alt="" className='w-full rounded-xl overflow-hidden'/>
+								</div>
 
-									<div className='flex flex-row w-full justify-center'>
-										<div
-										onClick={() => {
-											setCurrentPage('crop-img')
-										}}
-										className='px-6 py-2 text-white hover:scale-110 cursor-pointer duration-200 bg-blue-600 rounded-xl mx-4' id='normal'
-										>
-											Edit
-										</div>
-										<div
-										onClick={() => {
-											setCurrentPage('choose-img')
-											setImage('')
-										}}
-										className='px-6 py-2 text-white hover:scale-110 cursor-pointer duration-200 bg-blue-600 rounded-xl mx-4' id='normal'
-										>
-											New Image
-										</div>
+								<div className='flex flex-row w-full justify-center'>
+									<div
+									onClick={() => {
+										setCurrentPage('crop-img')
+									}}
+									className='px-6 py-2 text-white hover:scale-110 cursor-pointer duration-200 bg-blue-600 rounded-xl mx-4' id='normal'
+									>
+										Edit
+									</div>
+									<div
+									onClick={() => {
+										setCurrentPage('choose-img')
+										setImage('')
+									}}
+									className='px-6 py-2 text-white hover:scale-110 cursor-pointer duration-200 bg-blue-600 rounded-xl mx-4' id='normal'
+									>
+										New Image
 									</div>
 								</div>
+							</div>
 						)
 					}
 				</div>
-				 <div className='flex flex-col justify-center'>
-					<div className='text-3xl px-6 py-1 text-white' id='font'
-					>Title:</div>
+				<div className='flex flex-col justify-center'>
+					<div className='text-3xl px-6 py-1 text-white' id='font'>Title:</div>
 					<div className='flex flex- gap-3 items-center'>
-					<input
-					type="text" 
-					value={blog.title}
-					onChange={handleInputChange}
-					disabled={characterCount >= 40}
-					className=' px-6 py-6 text-lg w-[600px] bg-white h-10 rounded-xl focus:outline-none' id='blog' />
-					{
-						icon === '' ? 
-						<div></div> : 
-						<img src={icon} alt="" className='h-16 w-16 '/>
-					}
+						<input
+						type="text" 
+						value={blog.title}
+						onChange={handleInputChange}
+						disabled={characterCount >= 40}
+						className=' px-6 py-6 text-lg w-[600px] bg-white h-10 rounded-xl focus:outline-none' id='blog' />
+						{
+							icon === '' ? 
+							<div></div> : 
+							<img src={icon} alt="" className='h-16 w-16 '/>
+						}
 					</div>
-				 </div>
+				</div>
 			</div>
 
 
 			<div className='rounded-xl overflow-hidden border-none xl:flex-row w-[90vw] md:w-[80vw] xl:w-[70vw] my-10'>
 				<JoditEditor
 					ref={editor}
-					onChange={() => {
-						console.log(editor.current.value)
-						// setBlog({...blog, content: editor.current.value})
-					}}
 					config={{
 						height: 600,
 					}}
 				/>
-
-
     		</div>
 
 			
-
 			<div className='flex flex-row justify-center w-full gap-10 h-12 -mt-5 mb-10'>
 
 				<div  

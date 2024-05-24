@@ -27,22 +27,33 @@ export const ContextProvider = ({children}) => {
                 const token = localStorage.getItem('token');
                 const userId = localStorage.getItem('userId');
 
-                const response = await axios.post('http://localhost:8000/user/authcheck', {
+                if(token && userId) {
+                    const response = await axios.post('http://localhost:8000/user/authcheck', {
                     headers:{
                         authorization: `Bearer ${token}`
                     }, 
                     userId: userId
-                });
-                console.log(response);
-                setLoggedIn(response?.data?.loggedIn)
-                setDetails({
-                    id: response.data.user._id,
-                    fullname: response.data.user.fullname,
-                    username: response.data.user.username,
-                    email: response.data.user.email,
-                    avatar: response.data.user.avatar,
-                    addedToFavorites: (response.data.user.addedToFavorites || []),
-                })
+                    });
+                    console.log(response);
+                    setLoggedIn(response?.data?.loggedIn)
+                    setDetails({
+                        id: response.data.user._id,
+                        fullname: response.data.user.fullname,
+                        username: response.data.user.username,
+                        email: response.data.user.email,
+                        avatar: response.data.user.avatar,
+                        addedToFavorites: (response.data.user.addedToFavorites || []),
+                    })
+                } else {
+                    setLoggedIn(false)
+                    setDetails({
+                        id:'',
+                        fullname: '',
+                        username: '',
+                        email: '',
+                        avatar: '',
+                    })
+                }
     
             } catch (error) {
                 console.error('Error decoding token:', error);
@@ -57,16 +68,18 @@ export const ContextProvider = ({children}) => {
 		const isLogIn = async() => {
 			const token = localStorage.getItem('token')
 			if (token) {
-				const loggedIn = await axios.get('http://localhost:8000/user/logincheck', {
-					headers: {
-						authorization: `Bearer ${token}`
-					}
-				}
-			)
-			return loggedIn.data.isLoggedIn
+				const response = await axios.get('http://localhost:8000/user/logincheck', {
+                        headers: {
+                            authorization: `Bearer ${token}`
+                        }
+                    }
+                )
+                setLoggedIn(response?.data?.isLoggedIn)
+
+            }
 		}
-		}
-		setLoggedIn(isLogIn())
+
+        isLogIn()
 	}, [])
 
     const storeTokenInLocalStorage = (token) => {

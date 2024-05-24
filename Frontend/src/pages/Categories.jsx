@@ -20,7 +20,8 @@ function Categories () {
 
 
 	return (
-		<div className='mt-20 flex justify-center'>
+		<div className='mt-20 flex flex-col justify-center items-center'>
+			<div className='text-white text-3xl p-3 flex justify-start w-[80vw]' id='cabin'>Unleash your curiosity</div>
 			<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-4 w-[80vw] p-6'>
 				{
 					types.map((type) => (

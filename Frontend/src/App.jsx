@@ -11,6 +11,9 @@ import BlogDetails from './pages/BlogDetails'
 import SearchResults from './pages/SearchResults'
 import AuthorBlogs from './pages/AuthorBlogs'
 import HomeScreen from './pages/HomeScreen'
+import FavoriteBlogs from './pages/FavoriteBlogs'
+import WrittenBlogs from './pages/WrittenBlogs'
+import WrittenAndFavBlogs from './components/WrittenAndFavBlogs'
 
 
 
@@ -33,6 +36,8 @@ return (
 				<Route path='/blogs/:_id' element={<BlogDetails />} />
 				<Route path='/searchResults' element=<SearchResults /> />
 				<Route path='/author/:authorId' element=<AuthorBlogs />/>
+				<Route path='/favorites' element={<FavoriteBlogs/>}/>
+				<Route path='/written' element={<WrittenBlogs/>}/>
 			</Route>
 		</Routes>
 	</ContextProvider>

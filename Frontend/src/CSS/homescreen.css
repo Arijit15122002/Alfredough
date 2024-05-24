@@ -1,3 +1,128 @@
 #inner-div {
     background: linear-gradient(to bottom right, #fff 0%, #b7e7ec 50%, #fff 50%, #fff 100%); /* Required for pseudo-element positioning */
 }
+
+#alfredough-wallpaper {
+    background-image: url('https://images.unsplash.com/photo-1428550590922-34c77f716ad4?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+#background_home1{
+    background-image: url('https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#background_home2{
+    background-image: url('https://img.freepik.com/free-photo/elevated-view-laptop-stationeries-blue-backdrop_23-2147880457.jpg?t=st=1716377208~exp=1716380808~hmac=9a7d2c7c6d0563bd885bfb849adf92cb0686549660b210e0f03795fff0555ce9&w=996');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#background_home3{
+    background-image: url('https://images.unsplash.com/photo-1527168027773-0cc890c4f42e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#glowup{
+    text-shadow: 0px 0px 40px rgb(255, 255, 255);
+}
+
+#little_glow{
+    text-shadow: 0px 0px 20px rgb(154, 154, 154);
+}
+
+
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-left {
+    animation: slide-left 1.2s ease forwards;
+    text-shadow: 0px 0px 10px rgb(113, 113, 113);
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-right {
+    animation: slide-right 1.2s ease forwards;
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-down {
+    animation: slide-down 1.2s ease forwards;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-up { 
+    animation: slide-up 1.2s ease forwards;
+}
+
+.customizedHidden1 {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show1 {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+.customizedHidden2{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: all 1s;
+}
+
+.show2 {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}

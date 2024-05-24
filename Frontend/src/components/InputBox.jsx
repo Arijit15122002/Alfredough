@@ -27,11 +27,11 @@ function InputBox ({name, type, id, placeholder, icon, user, setUser }) {
                     onChange={handleInputs}
                     placeholder={placeholder}
                     id={id}
-                    className='w-full my-auto px-4 py-2 rounded-xl border-[2px] border-gray-400 bg-gray-100 focus:bg-violet-200 focus:outline-none focus:border-black duration-200 font-gelasio'
+                    className='w-full my-auto px-4 py-[5px] rounded-xl border-[2px] border-gray-400 bg-gray-100 focus:bg-violet-200 focus:outline-none focus:border-black duration-200 font-gelasio'
                 />
                 {
                 type == 'password' ? 
-                    <img src={passwordVisible ? 'https://res.cloudinary.com/daghlyuwh/image/upload/v1713679698/pjcbxodvyf4xxveox8wh.png' : 'https://res.cloudinary.com/daghlyuwh/image/upload/v1716054455/ejlawkapnuoeua598ycl.png'} alt="" className='w-[25px] h-[25px] left-4 mt-[7px] cursor-pointer' onClick={() => setPasswordVisible(!passwordVisible)}/>
+                    <img src={passwordVisible ? 'https://res.cloudinary.com/daghlyuwh/image/upload/v1713679698/pjcbxodvyf4xxveox8wh.png' : 'https://res.cloudinary.com/daghlyuwh/image/upload/v1713679666/m1nrgck2uv37fmyvyf2c.png'} alt="" className='w-[25px] h-[25px] left-4 mt-[7px] cursor-pointer' onClick={() => setPasswordVisible(!passwordVisible)}/>
                 : <></>
             }
             </div>

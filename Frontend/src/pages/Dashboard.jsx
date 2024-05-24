@@ -5,11 +5,13 @@ import MainBlog from '../components/MainBlog';
 import PopularBlogs from '../components/PopularBlogs';
 import NormalBlogs from '../components/NormalBlogs';
 import Footer from '../components/Footer';
+import { useGlobalContext } from '../contextAPI/context';
 
 function Dashboard () {
 	const [blogs, setBlogs] = useState([]);
 	const [mainBlog, setMainBlog] = useState([])
 	const [type, setType] = useState()
+	const {details} = useGlobalContext()
 
 	useEffect(() => {
 
@@ -39,7 +41,8 @@ function Dashboard () {
 
 	return (
 	<>
-	<div className='mt-40 lg:mt-28 flex justify-center h-auto xl:pl-4'>
+	<div className='mt-[80px] lg:mt-28 flex flex-col items-center justify-center h-auto xl:pl-4 mb-[50px]'>
+		<div className='w-full flex justify-start px-[15%] md:px-[10%] lg:px-[8%] text-white text-3xl py-4' id='cabin'>Hi, {details?.fullname?.split(" ")[0] || details?.fullname}!</div>
 		<div className=' gap-10 md:gap-5 grid grid-cols-1 md:grid-cols-2 lg:hidden'>
 			{blogs.map((blog) => 
 				<BlogCard key={blog.id} blog={blog} />
@@ -70,6 +73,7 @@ function Dashboard () {
 				
 			</div>
 			<div className='mt-16 lg:w-[80%] xl:w-[85%] mx-auto h-full'>
+				<div className='text-white text-2xl ' id='cabin'>Other blogs:</div>
 				<div className=' h-auto w-auto grid grid-cols-3 gap-y-6 my-6'>
 				{
 					blogs.map((blog) => (
