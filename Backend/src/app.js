@@ -6,10 +6,6 @@ const app = express();
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true
-}, {
-    origin: ["https://deploy.mern.lwhq.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
 }))
 
 //configuration
