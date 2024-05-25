@@ -12,7 +12,8 @@ function AuthorBlogs () {
 	//fetching user
 	useEffect(() => {
 		async function fetchUser() {
-			const response  = await axios.get(`http://localhost:8000/user/${authorId}`)
+			const response  = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${authorId}`)
+			console.log(response);
 			setUser(response.data.user)
 		}
 		fetchUser()
@@ -25,7 +26,7 @@ function AuthorBlogs () {
 			try {
 				const blogIds = user.writtenBlogs || []
 				const response = await Promise.all(blogIds.map(async (id) => {
-					const response = await axios.get(`http://localhost:8000/blogs/page/${id}`)
+					const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/page/${id}`)
 					return response.data.blog
 				}))
 				setBlogs(response)

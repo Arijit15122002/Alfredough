@@ -108,6 +108,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if(!existedUser) {
         return res.status(400).json({message: 'User does not exist'})
     } else {
+        console.log(existedUser)
         return res.status(200).json({message: 'User logged in successfully', user: existedUser, token: await existedUser.generateToken()})
     }
 })

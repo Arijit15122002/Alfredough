@@ -12,7 +12,7 @@ function PopularBlogs ({type, id}) {
 
     useEffect(() => {
         const fetchBlogs = async() => {
-            const response = await axios.get(`http://localhost:8000/blogs/list/${type}`)
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/list/${type}`)
             setBlogs(response.data.blogs.filter((blog) => blog._id !== id))
         }
 

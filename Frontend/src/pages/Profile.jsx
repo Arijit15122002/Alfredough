@@ -14,7 +14,7 @@ function Profile () {
 
 	useEffect(() => {
 		async function fetchUser() {
-			const response = await axios.get(`http://localhost:8000/user/${details.id}`);
+			const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${details.id}`);
 			setUser(response.data.user);
 			setIsLoading(false); // Set to false after data is fetched
 		}
@@ -23,7 +23,7 @@ function Profile () {
 	}, []);
 
 	async function fetchBlogs(blogIds) {
-		const response = await axios.post(`http://localhost:8000/blogs/chain`, {blogIds});
+		const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/blogs/chain`, {blogIds});
 		if(blogIds === user.writtenBlogs) {
 			setWrittenBlogs(response.data.blogs);
 		} else {

@@ -10,7 +10,7 @@ function FavoriteBlogs () {
 
 	useEffect(() => {
 		async function fetchBlogs(blogIds) {
-			const response = await axios.post(`http://localhost:8000/blogs/chain`, {blogIds});
+			const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/blogs/chain`, {blogIds});
 			setBlogs(response.data.blogs);
 		}
 

@@ -63,11 +63,11 @@ function Write () {
 
 
 			//uploading image to cloudinary
-			const uploadURL = 'https://api.cloudinary.com/v1_1/daghlyuwh/image/upload'
+			const uploadURL = `${import.meta.env.VITE_CLOUDINARY_UPLOAD_URL}`
 
 			const formData = new FormData()
 			formData.append('file', dataURL)
-			formData.append('upload_preset', 'blogs_own')
+			formData.append('upload_preset', `${import.meta.env.VITE_UPLOAD_PRESET}`)
 			axios.post(uploadURL, formData).then((response) => {
 				setImageAfterCrop(response.data.url);
 				setBlog({...blog, thumbnail: response.data.url})
@@ -121,7 +121,7 @@ function Write () {
 		else if(!blog.author.length) return toast.error('Please login first to write blog')
 		else if(blog.content.length < 20) return toast.error('Enter blog content')
 		else {
-			const response = await axios.post('http://localhost:8000' + '/blogs' + '/write', blog)
+			const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}` + '/blogs' + '/write', blog)
 			if(response.data.message === 'Blog added successfully')
 			{
 				const blogId = response.data.blog._id
@@ -129,7 +129,7 @@ function Write () {
 					userId,
 					blogId
 				}
-				const res = await axios.post('http://localhost:8000/user/addWrittenBlog', data)
+				const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/addWrittenBlog`, data)
 				navigate('/dashboard')
 				return toast.success('Blog added successfully')
 			}

@@ -27,7 +27,7 @@ function Search () {
 
     const searchSuggestions = async () => {
 		let query = search
-		const response = await axios.get(`http://localhost:8000/blogs/search/${query}`);
+		const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/search/${query}`);
 		setBlogs(response.data.blogs)
     }
 

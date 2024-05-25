@@ -10,7 +10,7 @@ function Comments ({comments}) {
 		const fetchUserFullNames = async() => {
 			const fetchedFullNames = await Promise.all(
 				comments.map(async(comment) => {
-					const response = await axios.get(`http://localhost:8000/user/${comment.userId}`)
+					const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${comment.userId}`)
 					const fullName = response.data.user.fullname
 					return fullName
 				})	

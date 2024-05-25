@@ -11,7 +11,7 @@ function Categories () {
 	const navigate = useNavigate()
 	const handleResultOnClick = async ({type}) => {
 		const actualType = type.type
-		const response = await axios.get(`http://localhost:8000/blogs/list/${actualType}`)
+		const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/list/${actualType}`)
 		if(response.statusText === 'OK')
 		{
 			navigate('/searchResults', {state: {blogs: response.data.blogs}})

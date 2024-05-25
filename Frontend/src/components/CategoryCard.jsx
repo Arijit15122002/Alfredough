@@ -38,7 +38,7 @@ function CategoryCard ({blog}) {
 		formatTime();
 
         const fetchAuthor = async () => {
-			const author = await axios.get(`http://localhost:8000/user/${blog.author}`)
+			const author = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${blog.author}`)
 			setAuthorImage(author.data.user.avatar)
 		}
 

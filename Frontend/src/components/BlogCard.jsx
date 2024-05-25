@@ -47,7 +47,7 @@ function BlogCard ({blog}) {
 	useEffect(() => {
 
 		const fetchAuthor = async () => {
-			const author = await axios.get(`http://localhost:8000/user/${blog.author}`)
+			const author = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${blog.author}`)
 			setAuthorImage(author.data.user.avatar)
 		}
 
@@ -70,7 +70,7 @@ function BlogCard ({blog}) {
 
 	const handleFavorties = async() => {
 		try {
-			const response = await axios.post('http://localhost:8000/user/favorites', request)
+			const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/favorites`, request)
 
 			if(response.data.message === 'Blog removed from favorites') setSaved(false)
 				else setSaved(true)

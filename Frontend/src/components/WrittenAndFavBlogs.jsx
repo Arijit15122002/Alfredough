@@ -11,7 +11,7 @@ function WrittenAndFavBlogs ({blog, type}) {
 
     useEffect(() => {
         async function fetchAuthor() {
-            const response = await axios.get(`http://localhost:8000/user/${blog.author}`)
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/${blog.author}`)
             setAuthor({
                 fullname: response.data.user.fullname,
                 avatar: response.data.user.avatar

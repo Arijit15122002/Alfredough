@@ -28,7 +28,7 @@ export const ContextProvider = ({children}) => {
                 const userId = localStorage.getItem('userId');
 
                 if(token && userId) {
-                    const response = await axios.post('http://localhost:8000/user/authcheck', {
+                    const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/authcheck`, {
                     headers:{
                         authorization: `Bearer ${token}`
                     }, 
@@ -68,7 +68,7 @@ export const ContextProvider = ({children}) => {
 		const isLogIn = async() => {
 			const token = localStorage.getItem('token')
 			if (token) {
-				const response = await axios.get('http://localhost:8000/user/logincheck', {
+				const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/logincheck`, {
                         headers: {
                             authorization: `Bearer ${token}`
                         }

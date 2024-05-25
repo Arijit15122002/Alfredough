@@ -66,7 +66,7 @@ function UserAuthForm ({type}) {
 		const formData = new FormData();
 		formData.append('file', file);
 		formData.append('upload_preset', 'blogs_own');
-		axios.post('https://api.cloudinary.com/v1_1/daghlyuwh/image/upload', formData)
+		axios.post(`${import.meta.env.VITE_CLOUDINARY_UPLOAD_URL}`, formData)
 		.then((res) => {
 			setUser({...user, avatar: res.data.url})
 		})
@@ -79,7 +79,7 @@ function UserAuthForm ({type}) {
 		let response = '';
 		try {
 			const userData = (serverRoute === '/signin') ? {email: user.email, password: user.password} : user
-			response = await axios.post('http://localhost:8000' + '/user' + `${serverRoute}`, userData)
+			response = await axios.post(`${import.meta.env.VITE_SERVER_URL}` + '/user' + `${serverRoute}`, userData)
 		} catch (error) {
 			console.log("Error: ", error)
 		}

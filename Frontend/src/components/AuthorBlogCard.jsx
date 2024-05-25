@@ -34,7 +34,7 @@ function AuthorBlogCard ({blog}) {
 
 	useEffect(() => {
 		const fetchLikes = async () => {
-			const likes = await axios.get(`http://localhost:8000/blogs/likes/get/${_id}`)
+			const likes = await axios.get(`${import.meta.env.SERVER_URL}/blogs/likes/get/${_id}`)
 			setLikeCount(likes.data.blog.likes)
 		};
 		fetchLikes();

@@ -19,7 +19,7 @@ function BlogDetails () {
 
 	useEffect(() => {
 		async function fetchData() {
-			const response = await axios.get(`http://localhost:8000/blogs/page/${_id}`);
+			const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/page/${_id}`);
 			setBlog(response.data.blog);
 			setComments(response.data.blog.commentsByUser);
 
@@ -54,7 +54,7 @@ function BlogDetails () {
 
 	const handleLikes = async () => {
 		try {
-			const res = await axios.post('http://localhost:8000/blogs/likes', params);
+			const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/blogs/likes`, params);
 			setBlog(res.data.blog);
 		} catch (error) {
 			console.error(error);	
@@ -65,8 +65,8 @@ function BlogDetails () {
 
 	const sendComment = async () => {
 		try{
-			const res = await axios.post('http://localhost:8000/blogs/comments', {...params, comment});
-			const response = await axios.get(`http://localhost:8000/blogs/comments/${blog._id}`)
+			const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/blogs/comments`, {...params, comment});
+			const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/comments/${blog._id}`)
 		} catch (error) {
 			console.error(error);
 		}

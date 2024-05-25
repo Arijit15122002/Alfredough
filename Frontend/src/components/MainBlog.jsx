@@ -36,7 +36,7 @@ function MainBlog({ blog }) {
 
 	const handleFavorties = async() => {
 		try {
-			const response = await axios.post('http://localhost:8000/user/favorites', request)
+			const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/favorites`, request)
 
 			if(response.data.message === 'Blog removed from favorites') setSaved(false)
 				else setSaved(true)

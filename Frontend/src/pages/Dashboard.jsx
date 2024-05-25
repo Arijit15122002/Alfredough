@@ -17,7 +17,7 @@ function Dashboard () {
 
 		const fetchMainBlog = async() =>{
 			try {
-				const response = await axios.get('http://localhost:8000/blogs/popular')
+				const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/popular`)
 				setMainBlog(response.data.blog)
 				setType(response.data.blog[0].type)
 			} catch (error) {
@@ -28,7 +28,7 @@ function Dashboard () {
 		fetchMainBlog()
 		const fetchData = async () => {
 			try {
-				const response = await axios.get('http://localhost:8000/blogs/dashboard');
+				const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/blogs/dashboard`);
 				setBlogs(response.data.blogs); // Assuming "blogs" is within the response data
 			} catch (error) {
 				console.log("Error occured while fetching blogs:", error);
