@@ -4,11 +4,9 @@ import { APIresponse } from "../utils/APIresponse.js"
 import { User } from "../models/user.model.js"
 import { Blog } from "../models/blogs.models.js"
 import jwt from 'jsonwebtoken'
-// import {uploadOnCloudinary} from "../utils/cloudinary.js"
 
 
 const registerUser = async (req, res) => {
-    console.log(req.body)
     // get user details from frontend 
     const {username, email, fullname, password, avatar} = req.body
 
@@ -24,24 +22,10 @@ const registerUser = async (req, res) => {
     const existedUser = await User.findOne({
         $or: [{ username }, { email }]
     })
-    console.log(existedUser);
     if(existedUser){
         return res.status(400).json({message: 'User already exists'})
     }
 
-    // check for images to cloudinary
-    // const avatarLocalPath = req.files?.avatar[0]?.path
-    // if(!avatarLocalPath) {
-    //     throw new APIerror(400, "Avatar is required")
-    // }
-    
-    //upploading the image on cloudinary
-    // const avatar = await uploadOnCloudinary(avatarLocalPath)
-    // if(!avatar) {
-    //     throw new APIerror(500, "Avatar upload failed")
-    // }
-
-    // create user object - create entry in db
     const user = await User.create({
         username: username.toLowerCase(),
         email,
@@ -59,15 +43,6 @@ const registerUser = async (req, res) => {
     } else {
         return res.status(201).json({message: 'User Created successfully', user})
     }
-
-    // generate token for user and send it 
-    // const token = jwt.sign({
-    //     _id: createdUser._id,
-    //     email: createdUser.email
-    // }, process.env.JWT_SECRET, {expiresIn: '7d'})
-
-    // user.token = token
-
 
     //return response
     return res.status(201).json({message: 'User Created successfully', token: await createdUser.generateToken()})
@@ -92,7 +67,6 @@ const checkIfLoggedIn = async(req, res) => {
             return res.status(200).json({isLoggedIn: !isExpired});
         }
     } catch (error) {
-        console.log(error)
         return res.status(500).json({message: "Internal server error"})
     }
 }
@@ -103,8 +77,6 @@ const checkAuthentication = async(req, res) => {
         const userId = req?.body?.userId
         if(token) {
             const decoded = jwt.decode(token);
-            console.log(decoded._id);
-            console.log(userId);
             if(decoded._id === userId) {
                 const user = await User.findById(userId)
                 return res.status(200).json({loggedIn: true, user})
@@ -120,7 +92,6 @@ const checkAuthentication = async(req, res) => {
 }
 
 const loginUser = asyncHandler(async (req, res) => {
-
 
     //validation
     const {email, password} = req.body

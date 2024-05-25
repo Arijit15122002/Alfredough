@@ -9,7 +9,6 @@ import Footer from '../components/Footer'
 function HomeScreen () {
 
 	const {loggedIn, details} = useGlobalContext()
-	console.log(details);
 	const [user, setUser] = useState()
 
 	const observerRef = useRef(null)

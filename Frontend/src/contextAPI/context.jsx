@@ -34,7 +34,6 @@ export const ContextProvider = ({children}) => {
                     }, 
                     userId: userId
                     });
-                    console.log(response);
                     setLoggedIn(response?.data?.loggedIn)
                     setDetails({
                         id: response.data.user._id,
@@ -42,6 +41,7 @@ export const ContextProvider = ({children}) => {
                         username: response.data.user.username,
                         email: response.data.user.email,
                         avatar: response.data.user.avatar,
+                        writtenBlogs: (response.data.user.writtenBlogs || []),
                         addedToFavorites: (response.data.user.addedToFavorites || []),
                     })
                 } else {

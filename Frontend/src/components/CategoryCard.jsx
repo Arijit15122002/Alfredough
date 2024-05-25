@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 
 function CategoryCard ({blog}) {
 
-	console.log(blog);
-
 	const {author, authorName, title, content, createdAt, updatedAt, likes, thumbnail, type, _id} = blog
 
     const [authorImage, setAuthorImage] = useState()

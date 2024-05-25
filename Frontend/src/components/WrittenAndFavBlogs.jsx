@@ -12,7 +12,6 @@ function WrittenAndFavBlogs ({blog, type}) {
     useEffect(() => {
         async function fetchAuthor() {
             const response = await axios.get(`http://localhost:8000/user/${blog.author}`)
-            console.log(response);
             setAuthor({
                 fullname: response.data.user.fullname,
                 avatar: response.data.user.avatar
@@ -46,7 +45,7 @@ function WrittenAndFavBlogs ({blog, type}) {
                 </div>
                 <div className='flex flex-col'>
                     <div className='flex flex-row'>
-                        <Link to={`/blogs/${blog._id}`} className={`text-xl text-white px-6 w-[90%] ${type==='written' ? 'pt-4 pb-2' : 'pt-4'}`} id='times' >{blog.title}</Link>
+                        <Link to={`/blogs/${blog._id}`} className={`text-xl text-white px-6 w-[90%] ${type==='written' ? 'pt-4 pb-2' : 'pt-4'}`} id='times' >{blog.title.length > 35 ? blog.title.substring(0, 35) + '...' : blog.title}</Link>
                         <div className='flex flex-col items-center justify-center w-[20%] p-2'>
                             <div className='text-white' id='font'>
                                 {blog.likes}

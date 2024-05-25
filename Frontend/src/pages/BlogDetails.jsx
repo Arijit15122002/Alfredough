@@ -52,13 +52,10 @@ function BlogDetails () {
 		userId: details.id
 	}
 
-	// console.log(blog)
-
 	const handleLikes = async () => {
 		try {
 			const res = await axios.post('http://localhost:8000/blogs/likes', params);
 			setBlog(res.data.blog);
-			console.log(res);
 		} catch (error) {
 			console.error(error);	
 		}
@@ -70,7 +67,6 @@ function BlogDetails () {
 		try{
 			const res = await axios.post('http://localhost:8000/blogs/comments', {...params, comment});
 			const response = await axios.get(`http://localhost:8000/blogs/comments/${blog._id}`)
-			console.log(response);
 		} catch (error) {
 			console.error(error);
 		}

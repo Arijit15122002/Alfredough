@@ -27,8 +27,6 @@ const fetchChainOfBlogs = async (req, res) => {
 
 const addBlogs = async (req, res) => {
 
-    console.log(req.body)
-
 
     //getting details of a blog
     const {title, type, thumbnail, content, author} = req.body
@@ -61,7 +59,6 @@ const addBlogs = async (req, res) => {
 const fetchBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find({});
-        console.log(blogs);
         return res.status(200).json({message: "Blogs fetched successfully", blogs})
     } catch (error) {
         return res.status(400).json({message: "Error fetching blogs", error})
@@ -92,9 +89,7 @@ const editLikes = async(req, res) => {
 
 const getLikes = async(req, res) => {
     try {
-        console.log(req.params.blogId)
         const blog = await Blog.findById(req.params.blogId);
-        console.log(blog)
         return res.status(200).json({message: "Likes fetched successfully", blog})
     } catch (error) {
         return res.status(400).json({message: "Error fetching likes", error})
@@ -114,7 +109,6 @@ const fetchFilteredBlogs = async(req, res) => {
 
 const addComments = async (req, res) => {
     const { comment, userId, blogId } = req.body;
-    console.log(comment, userId, blogId);  // Log for debugging
   
     try {
       const blog = await Blog.findOne({ _id: blogId });
@@ -145,8 +139,6 @@ const fetchComments = async(req, res) => {
 
 const searchResults = async(req, res) => {
     const query = req.params.query
-
-    console.log(query)
 
     try {
         const blogs = await Blog.find({ 

@@ -57,7 +57,6 @@ function Write () {
 				imageCroppedArea.width, 
 				imageCroppedArea.height)
 			setImageAfterCrop(canvasEle.toDataURL('image/jpeg'))
-			console.log(canvasEle.toDataURL('image/jpeg'));
 			setCurrentPage('image-cropped')
 
 			const dataURL = canvasEle.toDataURL('image/jpeg')
@@ -93,14 +92,21 @@ function Write () {
 
 	const characterCount = blog.title.length
 	const handleInputChange = (e) => {
-		setBlog({...blog, title:e.target.value.substring(0, 40)})
+		setBlog({...blog, title:e.target.value})
 	}
 
 	
 	const updateBlog = () => {
-		console.log(blog)
 		setBlog({...blog, content:editor.current.value, author:details.id, authorName:details.fullname})
 
+		if(!blog.type.length) return toast.error('Select blog type')
+		else if(!blog.title.length) return toast.error('Enter blog title')
+		else if(!blog.content.length) return toast.error('Enter blog content')
+		else if(!blog.thumbnail.length) return toast.error('Select an image for blog thumbnail')
+		else if(!blog.author.length) return toast.error('Please login first to write blog')
+	    else if(blog.content.length < 20) return toast.error('Enter blog content')
+		else {
+			return toast.success('Now you are ready to post the blog')}
 	}
 	
 
@@ -108,18 +114,25 @@ function Write () {
 
 	//posting theblog
 	const handleSubmit = async() => {
-		console.log(blog);
-		const response = await axios.post('http://localhost:8000' + '/blogs' + '/write', blog)
-		if(response.data.message === 'Blog added successfully')
-		{
-			const blogId = response.data.blog._id
-			const data = {
-				userId,
-				blogId
+		if(!blog.type.length) return toast.error('Select blog type')
+		else if(!blog.title.length) return toast.error('Enter blog title')
+		else if(!blog.content.length) return toast.error('Enter blog content')
+		else if(!blog.thumbnail.length) return toast.error('Select an image for blog thumbnail')
+		else if(!blog.author.length) return toast.error('Please login first to write blog')
+		else if(blog.content.length < 20) return toast.error('Enter blog content')
+		else {
+			const response = await axios.post('http://localhost:8000' + '/blogs' + '/write', blog)
+			if(response.data.message === 'Blog added successfully')
+			{
+				const blogId = response.data.blog._id
+				const data = {
+					userId,
+					blogId
+				}
+				const res = await axios.post('http://localhost:8000/user/addWrittenBlog', data)
+				navigate('/dashboard')
+				return toast.success('Blog added successfully')
 			}
-			const res = await axios.post('http://localhost:8000/user/addWrittenBlog', data)
-			console.log(res)
-			navigate('/dashboard')
 		}
 	} 
 
@@ -128,6 +141,7 @@ function Write () {
 
 return (
 	<>
+		<Toaster />
 		<div className='mt-20 flex justify-center items-center flex-col'>
 			<div className='flex flex-row gap-4 py-4'>
 				<div id='font' className='text-xl font-semibold text-white'>Select Type: </div>
@@ -238,7 +252,6 @@ return (
 						type="text" 
 						value={blog.title}
 						onChange={handleInputChange}
-						disabled={characterCount >= 40}
 						className=' px-6 py-6 text-lg w-[600px] bg-white h-10 rounded-xl focus:outline-none' id='blog' />
 						{
 							icon === '' ? 

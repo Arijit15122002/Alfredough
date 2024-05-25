@@ -11,8 +11,18 @@ import Footer from '../components/Footer'
 
 function UserAuthForm ({type}) {
 
-	const observerRef = useRef(null)
+	const { loggedIn, setLoggedIn, details, setDetails, storeTokenInLocalStorage } = useGlobalContext()
 
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (loggedIn) {
+			navigate('/dashboard')
+		}
+	}, [loggedIn])
+
+
+
+	const observerRef = useRef(null)
 	useEffect(() => {
 		observerRef.current = new IntersectionObserver((entries) => {
 		  entries.forEach((entry) => {
@@ -33,27 +43,8 @@ function UserAuthForm ({type}) {
 		};
 	  }, [type]);
 
-	//to redirect on another page
-	const navigate = useNavigate();
-
-
-	const { loggedIn, setLoggedIn, details, setDetails, storeTokenInLocalStorage } = useGlobalContext()
-
-
-
-	useEffect(() => {
-		if (loggedIn) {
-			navigate('/dashboard')
-		}
-	}, [loggedIn])
-
 
 	const inputImage = useRef(null);
-
-
-	
-
-
 	//creating user that will be passed at the backend
 	const [user, setUser] = useState({
 		fullname: '',
@@ -68,19 +59,15 @@ function UserAuthForm ({type}) {
 	const handleImageClick = () => {
 		inputImage.current.click();
 	}
-
-
 	//cloudinary upload
 	const handleImageChange = (e) => {
 
 		const file = e.target.files[0];
 		const formData = new FormData();
-		console.log(file);
 		formData.append('file', file);
 		formData.append('upload_preset', 'blogs_own');
 		axios.post('https://api.cloudinary.com/v1_1/daghlyuwh/image/upload', formData)
 		.then((res) => {
-			console.log(res)
 			setUser({...user, avatar: res.data.url})
 		})
 		.catch((err) => console.log(err))
@@ -93,13 +80,11 @@ function UserAuthForm ({type}) {
 		try {
 			const userData = (serverRoute === '/signin') ? {email: user.email, password: user.password} : user
 			response = await axios.post('http://localhost:8000' + '/user' + `${serverRoute}`, userData)
-			console.log(response)
 		} catch (error) {
 			console.log("Error: ", error)
 		}
 		if(serverRoute === '/signin' && response?.statusText === 'OK')
 		{
-			console.log(response)
 			setLoggedIn(true)
 			storeTokenInLocalStorage(response?.data?.token)
 			setDetails({
@@ -108,9 +93,11 @@ function UserAuthForm ({type}) {
 				username: response.data.user.username,
 				email: response.data.user.email,
 				avatar: response.data.user.avatar,
+				writtenBlogs: (response.data.user.writtenBlogs || []),
 				addedToFavorites: (response.data.user.addedToFavorites || []),
 			})
 			localStorage.setItem('userId',response.data.user._id)
+			return toast.success('Login Successful')
 			navigate('/dashboard')
 		} else if (serverRoute === '/signup' && response?.statusText === 'Created') {
 			navigate('/signin')
@@ -142,9 +129,9 @@ function UserAuthForm ({type}) {
 		if(!emailRegex.test(email)){
 			return toast.error("Email is invalid")
 		}
-		// if(!passwordRegex.test(password)){
-		// 	return toast.error("Password should be 6 to 20 characters long with a numeric, one lowerrcase  and one uppercase letter.")
-		// }
+		if(!password.length){
+			return toast.error("Password should be atleast of 8  characters.")
+		}
 		userAuthThroughServer(serverRoute, user)
 
 	}

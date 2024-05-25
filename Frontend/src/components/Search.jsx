@@ -32,7 +32,8 @@ function Search () {
     }
 
 	const goToSearchResults =() => {
-		navigate('/searchResults', {state: {blogs: blogs}})
+		navigate('/searchResults', {state: {
+			query: search, blogs: blogs}})
 	}
 
 

@@ -7,7 +7,6 @@ function AuthorCard ({createdAt, authorId}) {
         async function fetchUser() {
             const response = await axios.get(`http://localhost:8000/user/${authorId}`)
             setUser(response.data)
-            console.log(response)
         }
     }, [authorId])
   return (

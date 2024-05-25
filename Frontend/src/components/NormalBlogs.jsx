@@ -61,7 +61,6 @@ function NormalBlogs ({blog}) {
 	const handleFavorties = async() => {
 		try {
 			const response = await axios.post('http://localhost:8000/user/favorites', request)
-			console.log(response);
 
 			if(response.data.message === 'Blog removed from favorites') setSaved(false)
 				else setSaved(true)
@@ -78,7 +77,9 @@ function NormalBlogs ({blog}) {
         </div>
         <div className='w-full flex flex-row py-3 justify-between'>
             <div className='text-[18px] text-white py-1 mx-4 w-[90%]' id='times'>
-                <Link to={`/blogs/${blog._id}`}>{blog.title}</Link>
+                <Link to={`/blogs/${blog._id}`}>
+                    {blog.title.length > 35 ? blog.title.substring(0, 40) + '...' : blog.title}
+                </Link>
             </div>
             <div className='flex flex-col w-[20%] items-center'>
                 <div className='text-white' id='font'>{blog.likes}</div>

@@ -13,7 +13,6 @@ function AuthorBlogs () {
 	useEffect(() => {
 		async function fetchUser() {
 			const response  = await axios.get(`http://localhost:8000/user/${authorId}`)
-			console.log(response);
 			setUser(response.data.user)
 		}
 		fetchUser()

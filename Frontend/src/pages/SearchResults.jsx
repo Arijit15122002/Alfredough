@@ -5,9 +5,9 @@ import CategoryCard from '../components/CategoryCard'
 function SearchResults () {
     const location = useLocation()
     const {blogs} = location.state
-    console.log(blogs);
   return (
-    <div className='mt-32 flex justify-center'>
+    <div className='mt-32 flex justify-center flex-col'>
+        <div className='text-3xl text-white flex px-[10%] pt-8 pb-6' id='cabin'>Search results on '{location.state.query}'</div>
         {
             blogs.length == 0 ? 
             <div className='w-full h-full text-xl flex justify-center items-center'>

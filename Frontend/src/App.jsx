@@ -13,7 +13,6 @@ import AuthorBlogs from './pages/AuthorBlogs'
 import HomeScreen from './pages/HomeScreen'
 import FavoriteBlogs from './pages/FavoriteBlogs'
 import WrittenBlogs from './pages/WrittenBlogs'
-import WrittenAndFavBlogs from './components/WrittenAndFavBlogs'
 
 
 

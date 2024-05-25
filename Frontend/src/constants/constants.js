@@ -32,5 +32,3 @@ export const types = [
     {type: 'Parenting', icon:'https://res.cloudinary.com/daghlyuwh/image/upload/v1713682327/d6hk47okec21ciusekek.png', img:'https://images.unsplash.com/photo-1560328055-851c3b903ef3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', para:'We’re all parents. We’re all in this together.'},
     {type: 'Other', icon:'https://res.cloudinary.com/daghlyuwh/image/upload/v1713679668/vvuppecghyvrzmrhxdxd.png', img:'https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', parra:'' },
 ]
-
-console.log(types.length)
