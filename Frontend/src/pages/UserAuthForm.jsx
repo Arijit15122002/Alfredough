@@ -83,7 +83,7 @@ function UserAuthForm ({type}) {
 		} catch (error) {
 			console.log("Error: ", error)
 		}
-		if(serverRoute === '/signin' && response?.statusText === 'OK')
+		if(serverRoute === '/signin' && response?.data?.user)
 		{
 			setLoggedIn(true)
 			storeTokenInLocalStorage(response?.data?.token)
@@ -99,7 +99,7 @@ function UserAuthForm ({type}) {
 			localStorage.setItem('userId',response.data.user._id)
 			return toast.success('Login Successful')
 			navigate('/dashboard')
-		} else if (serverRoute === '/signup' && response?.statusText === 'Created') {
+		} else if (serverRoute === '/signup' && response?.data?.user) {
 			navigate('/signin')
 		} else {
 			return toast.error('Entered email or password is incorrect');
