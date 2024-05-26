@@ -101,6 +101,8 @@ function UserAuthForm ({type}) {
 			navigate('/dashboard')
 		} else if (serverRoute === '/signup' && response?.statusText === 'Created') {
 			navigate('/signin')
+		} else {
+			return toast.error('Entered email or password is incorrect');
 		}
 	}
 

@@ -1,7 +1,4 @@
 import { Blog } from "../models/blogs.models.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { APIerror } from "../utils/APIerror.js"
-import { APIresponse } from "../utils/APIresponse.js"
 import { User } from "../models/user.model.js";
 
 
@@ -34,7 +31,7 @@ const addBlogs = async (req, res) => {
 
     //validation
     if(title === "" || thumbnail === "" || type === "" || content === "" || author === "") {
-        throw new APIerror(400, "All fields are required")  
+        return res.status(400).json({message: "All fields are required"})  
     }
 
 

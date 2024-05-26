@@ -1,6 +1,3 @@
-import {asyncHandler} from "../utils/asyncHandler.js"
-import {APIerror} from "../utils/APIerror.js"
-import { APIresponse } from "../utils/APIresponse.js"
 import { User } from "../models/user.model.js"
 import { Blog } from "../models/blogs.models.js"
 import jwt from 'jsonwebtoken'
@@ -43,9 +40,6 @@ const registerUser = async (req, res) => {
     } else {
         return res.status(201).json({message: 'User Created successfully', user})
     }
-
-    //return response
-    return res.status(201).json({message: 'User Created successfully', token: await createdUser.generateToken()})
 }
 
 const checkIfLoggedIn = async(req, res) => {
@@ -91,12 +85,12 @@ const checkAuthentication = async(req, res) => {
     }
 }
 
-const loginUser = asyncHandler(async (req, res) => {
+const loginUser = async (req, res) => {
 
     //validation
     const {email, password} = req.body
     if(email === "" || password === "") {
-        throw new APIerror(400, "All fields are required")
+        return res.status(400).json({message: 'All fields are required'})
     }
 
     //check if user exists
@@ -111,7 +105,7 @@ const loginUser = asyncHandler(async (req, res) => {
         console.log(existedUser)
         return res.status(200).json({message: 'User logged in successfully', user: existedUser, token: await existedUser.generateToken()})
     }
-})
+}
 
 const searchUser = async(req, res) => {
     const id = req.params.userId 

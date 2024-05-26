@@ -163,7 +163,7 @@ return (
 					{
 						isOpen ? (
 							<div className='z-50 h-48 w-52 overflow-y-auto' id='scroll'>
-								<ul className='my-1'>
+								<ul className='my-1' key={type}>
 									{
 										types.map(({type, icon}) => (
 											<>
