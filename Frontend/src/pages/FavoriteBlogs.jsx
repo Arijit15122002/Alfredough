@@ -18,8 +18,9 @@ function FavoriteBlogs () {
 	},[])
 
 return (
-	<div className='w-full h-full flex items-center justify-center'>
-		<div className='mt-[80px] w-[80%] sm:w-[70%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 rounded-xl gap- bg-violet-300 items-center'>
+	<div className='mt-[70px] h-[calc(100vh - 70px)] w-full flex flex-col justify-center items-center'>
+		<div className=' text-2xl text-bold py-4 w-[80%] text-white' id='cabin'>Blogs written by you!</div>
+		<div className='w-[80%] sm:w-[70%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center rounded-xl gap- bg-violet-300'>
 		{
 			blogs?.map((blog) => <WrittenAndFavBlogs blog={blog} type={'favorites'}/>)
 		}

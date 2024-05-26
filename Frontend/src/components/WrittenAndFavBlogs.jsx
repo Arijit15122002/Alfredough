@@ -61,7 +61,7 @@ function WrittenAndFavBlogs ({blog, type}) {
                         </small>
                     </div>
                     <div className={`${type === 'written' ? 'hidden' : 'flex justify-center'} `}>
-                        <Link to={`/author/${blog.author}`} className='w-[60%] flex flex-row items-center pl-3 py-2 bg-[#6d6d6d] rounded-xl my-2 hover:scale-110 hover:bg-white text-white hover:border-[1px] hover:border-[#232323] hover:text-black duration-200 ease-in-out'>
+                        <Link to={`/author/${blog.author}`} className='w-[78%] sm:w-[60%] flex flex-row items-center pl-3 py-2 bg-[#6d6d6d] rounded-xl my-2 hover:scale-110 hover:bg-white text-white hover:border-[1px] hover:border-[#232323] hover:text-black duration-200 ease-in-out'>
                             <div className=''><img src={author?.avatar} alt="" className='w-10 h-10 rounded-md'/></div>
                             <div className='pl-4 pr-1' id='times'>by: {author?.fullname}</div>
                         </Link>
