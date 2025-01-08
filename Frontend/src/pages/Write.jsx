@@ -78,6 +78,8 @@ function Write () {
 		}
 	}
 
+	console.log(imageAfterCrop)
+
 	//function when cropping is cancelled
 	const onCropCancel = () => {
 		setCurrentPage('choose-img')
